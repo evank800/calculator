@@ -58,12 +58,14 @@ function clearDisplay(){
     while(display.firstChild){
         display.removeChild(display.firstChild);
     }
+    operationArr = [];
+    console.log(operationArr)
 }
 
 //delete the last number or operator
 function deleteNum(){
     display.removeChild(display.lastChild) // removes the last number or operator from the display
-    operationArr.pop();
+    operationArr.pop(); // removes the last element of the array
     console.log(operationArr)
 }
 
