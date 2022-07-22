@@ -63,6 +63,8 @@ function clearDisplay(){
 //delete the last number or operator
 function deleteNum(){
     display.removeChild(display.lastChild) // removes the last number or operator from the display
+    operationArr.pop();
+    console.log(operationArr)
 }
 
 function displayNum(){
@@ -72,8 +74,8 @@ function displayNum(){
         display.appendChild(oneShow);
         operationArr.push(oneShow.textContent); // store the num or operator in the array
         console.log(operationArr)
-
     })
+
     two.addEventListener("click", function(e){
         const twoShow = document.createElement('div')
         twoShow.textContent = 2;
