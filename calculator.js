@@ -51,6 +51,8 @@ const over = document.querySelector('#divide');
 const remove = document.querySelector('#delete')
 const clear = document.querySelector('#clear');
 
+let operationArr = [];
+
 //clears the whole display
 function clearDisplay(){
     while(display.firstChild){
@@ -60,82 +62,110 @@ function clearDisplay(){
 
 //delete the last number or operator
 function deleteNum(){
-    display.removeChild(display.lastChild)
+    display.removeChild(display.lastChild) // removes the last number or operator from the display
 }
 
 function displayNum(){
     one.addEventListener("click", function(e){
         const oneShow = document.createElement('div')
         oneShow.textContent = 1;
-        display.appendChild(oneShow)
+        display.appendChild(oneShow);
+        operationArr.push(oneShow.textContent); // store the num or operator in the array
+        console.log(operationArr)
+
     })
     two.addEventListener("click", function(e){
         const twoShow = document.createElement('div')
         twoShow.textContent = 2;
-        display.appendChild(twoShow)
+        display.appendChild(twoShow);
+        operationArr.push(twoShow.textContent);
+        console.log(operationArr)
     })
     three.addEventListener("click", function(e){
         const threeShow = document.createElement('div')
         threeShow.textContent = 3;
-        display.appendChild(threeShow)
+        display.appendChild(threeShow);
+        operationArr.push(threeShow.textContent);
+        console.log(operationArr)
     })
     four.addEventListener("click", function(e){
         const fourShow = document.createElement('div')
         fourShow.textContent = 4;
-        display.appendChild(fourShow)
+        display.appendChild(fourShow);
+        operationArr.push(fourShow.textContent);
+        console.log(operationArr)
     })
     five.addEventListener("click", function(e){
         const fiveShow = document.createElement('div')
         fiveShow.textContent = 5;
-        display.appendChild(fiveShow)
+        display.appendChild(fiveShow);
+        operationArr.push(fiveShow.textContent);
+        console.log(operationArr)
     })
     six.addEventListener("click", function(e){
         const sixShow = document.createElement('div')
         sixShow.textContent = 6;
-        display.appendChild(sixShow)
+        display.appendChild(sixShow);
+        operationArr.push(sixShow.textContent);
+        console.log(operationArr)
     })
     seven.addEventListener("click", function(e){
         const sevenShow = document.createElement('div')
         sevenShow.textContent = 7;
-        display.appendChild(sevenShow)
+        display.appendChild(sevenShow);
+        operationArr.push(sevenShow.textContent);
+        console.log(operationArr)
     })
     eight.addEventListener("click", function(e){
         const eightShow = document.createElement('div')
         eightShow.textContent = 8;
-        display.appendChild(eightShow)
+        display.appendChild(eightShow);
+        operationArr.push(eightShow.textContent);
+        console.log(operationArr)
     })
     nine.addEventListener("click", function(e){
         const nineShow = document.createElement('div')
         nineShow.textContent = 9;
-        display.appendChild(nineShow)
+        display.appendChild(nineShow);
+        operationArr.push(nineShow.textContent);
+        console.log(operationArr)
     })
     zero.addEventListener("click", function(e){
         const zeroShow = document.createElement('div')
         zeroShow.textContent = 0;
-        display.appendChild(zeroShow)
+        display.appendChild(zeroShow);
+        operationArr.push(zeroShow.textContent);
+        console.log(operationArr)
     })
     plus.addEventListener("click", function(e){
         const plusShow = document.createElement('div')
         plusShow.textContent = '+';
-        display.appendChild(plusShow)
+        display.appendChild(plusShow);
+        operationArr.push(plusShow.textContent);
+        console.log(operationArr)
     })
     minus.addEventListener("click", function(e){
         const minusShow = document.createElement('div')
-        minusShow.textContent = 1;
-        display.appendChild(minusShow)
+        minusShow.textContent = '-';
+        display.appendChild(minusShow);
+        operationArr.push(minusShow.textContent);
+        console.log(operationArr)
     })
     times.addEventListener("click", function(e){
-        const oneShow = document.createElement('div')
-        timesShow.textContent = 1;
-        display.appendChild(timesShow)
+        const timesShow = document.createElement('div')
+        timesShow.textContent = 'x';
+        display.appendChild(timesShow);
+        operationArr.push(timesShow.textContent);
+        console.log(operationArr)
     })
     over.addEventListener("click", function(e){
         const overShow = document.createElement('div')
-        overShow.textContent = 1;
-        display.appendChild(overShow)
+        overShow.textContent = '/';
+        display.appendChild(overShow);
+        operationArr.push(overShow.textContent);
+        console.log(operationArr)
     })
 
-    //equals.addeEventlistener
     remove.addEventListener("click", function(e){
         deleteNum();
     })
@@ -144,4 +174,5 @@ function displayNum(){
     })
 }
 
+//equals.addeEventlistener
 displayNum()
