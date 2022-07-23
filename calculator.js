@@ -33,7 +33,7 @@ function operate(operator, a, b){
     }
 }
 
-const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide')
+const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide, #equals')
 const display = document.querySelector('#display');
 const one = document.querySelector('#one');
 const two = document.querySelector('#two');
@@ -53,21 +53,22 @@ const remove = document.querySelector('#delete')
 const clear = document.querySelector('#clear');
 
 let operationArr = [];
+let numArr = [];
+let operatorArr = [];
 
 //clears the whole display(AC button)
 function clearDisplay(){
     while(display.firstChild){
         display.removeChild(display.firstChild);
     }
-    operationArr = []; // array becomes empty
+    /* operationArr = []; */ // array becomes empty
     console.log(operationArr)
 }
 
 //delete the last number or operator(Del button)
 function deleteNum(){
     display.removeChild(display.lastChild) // removes the last number or operator from the display
-    operationArr.pop(); // removes the last element of the array
-    console.log(operationArr)
+    numArr.pop(); // removes the last element of the array
 }
 
 //displays/deletes/clears numers/operators in div and stores/delete them in/from the array
@@ -76,100 +77,110 @@ function displayNum(){
         const oneShow = document.createElement('div')
         oneShow.textContent = 1;
         display.appendChild(oneShow);
-        operationArr.push(oneShow.textContent); // store the num or operator in the array
-        console.log(operationArr)
+        /* operationArr.push(oneShow.textContent); */ // store the num or operator in the array
+        numArr.push(oneShow.textContent)
+        console.log(numArr)
     })
 
     two.addEventListener("click", function(e){
         const twoShow = document.createElement('div')
         twoShow.textContent = 2;
         display.appendChild(twoShow);
-        operationArr.push(twoShow.textContent);
-        console.log(operationArr)
+        /* operationArr.push(twoShow.textContent) */
+        numArr.push(twoShow.textContent);
+        console.log(numArr)
     })
     three.addEventListener("click", function(e){
         const threeShow = document.createElement('div')
         threeShow.textContent = 3;
         display.appendChild(threeShow);
-        operationArr.push(threeShow.textContent);
-        console.log(operationArr)
+        /* operationArr.push(threeShow.textContent) */
+        numArr.push(threeShow.textContent);
+        console.log(numArr)
     })
     four.addEventListener("click", function(e){
         const fourShow = document.createElement('div')
         fourShow.textContent = 4;
         display.appendChild(fourShow);
-        operationArr.push(fourShow.textContent);
-        console.log(operationArr)
+        /* operationArr.push(fourShow.textContent) */
+        numArr.push(fourShow.textContent);
+        console.log(numArr)
     })
     five.addEventListener("click", function(e){
         const fiveShow = document.createElement('div')
         fiveShow.textContent = 5;
         display.appendChild(fiveShow);
-        operationArr.push(fiveShow.textContent);
-        console.log(operationArr)
+        /* operationArr.push(fiveShow.textContent) */
+        numArr.push(fiveShow.textContent);
+        console.log(numArr)
     })
     six.addEventListener("click", function(e){
         const sixShow = document.createElement('div')
         sixShow.textContent = 6;
         display.appendChild(sixShow);
-        operationArr.push(sixShow.textContent);
-        console.log(operationArr)
+        /* operationArr.push(sixShow.textContent); */
+        numArr.push(sixShow.textContent);
+        console.log(numArr)
     })
     seven.addEventListener("click", function(e){
         const sevenShow = document.createElement('div')
         sevenShow.textContent = 7;
         display.appendChild(sevenShow);
-        operationArr.push(sevenShow.textContent);
-        console.log(operationArr)
+        /* operationArr.push(sevenShow.textContent); */
+        numArr.push(sevenShow.textContent)
+        console.log(numArr)
     })
     eight.addEventListener("click", function(e){
         const eightShow = document.createElement('div')
         eightShow.textContent = 8;
         display.appendChild(eightShow);
-        operationArr.push(eightShow.textContent);
-        console.log(operationArr)
+        /* operationArr.push(eightShow.textContent); */
+        numArr.push(eightShow.textContent)
+        console.log(numArr)
     })
     nine.addEventListener("click", function(e){
         const nineShow = document.createElement('div')
         nineShow.textContent = 9;
         display.appendChild(nineShow);
-        operationArr.push(nineShow.textContent);
-        console.log(operationArr)
+        /* operationArr.push(nineShow.textContent); */
+        numArr.push(nineShow.textContent)
+        console.log(numArr)
     })
     zero.addEventListener("click", function(e){
         const zeroShow = document.createElement('div')
         zeroShow.textContent = 0;
         display.appendChild(zeroShow);
-        operationArr.push(zeroShow.textContent);
-        console.log(operationArr)
+        /* operationArr.push(zeroShow.textContent); */
+        numArr.push(zeroShow.textContent)
+        console.log(numArr)
     })
     plus.addEventListener("click", function(e){
         const plusShow = document.createElement('div')
         plusShow.textContent = '+';
         display.appendChild(plusShow);
-        operationArr.push(plusShow.textContent);
-        console.log(operationArr)
+        /* operatorArr.push(plusShow.textContent);
+        console.log(operatorArr) */
     })
     minus.addEventListener("click", function(e){
         const minusShow = document.createElement('div')
         minusShow.textContent = '-';
         display.appendChild(minusShow);
-        operationArr.push(minusShow.textContent);
-        console.log(operationArr)
+        /* operatorArr.push(minusShow.textContent);
+        console.log(operatorArr) */
     })
     times.addEventListener("click", function(e){
         const timesShow = document.createElement('div')
         timesShow.textContent = 'x';
         display.appendChild(timesShow);
-        operationArr.push(timesShow.textContent);
-        console.log(operationArr)
+        /* operatorArr.push(timesShow.textContent);
+        console.log(operatorArr) */
     })
     over.addEventListener("click", function(e){
         const overShow = document.createElement('div')
         overShow.textContent = '/';
         display.appendChild(overShow);
-        operationArr.push(overShow.textContent);
-        console.log(operationArr)
+        /* operatorArr.push(overShow.textContent);
+        console.log(operatorArr) */
     })
 
     remove.addEventListener("click", function(e){
@@ -177,6 +188,7 @@ function displayNum(){
     })
     clear.addEventListener("click", function(e){
         clearDisplay();
+        numArr = [];
     })
 }
 
@@ -187,39 +199,68 @@ function concatenateNum(array){
 
 function readArr(){
     operators.forEach(operator => operator.addEventListener("click", function(e){
-        let firstNumArr = [];
-        let secondNumArr = [];
-        /* let opCount = 0; */
+        //pushing number and operator into the array
+        const concatNum = concatenateNum(numArr)
+        operationArr.push(concatNum)
+        operationArr.push(operator.textContent)
+        console.log(operationArr);
+
+        for(let i = 0; i < operationArr.length; i++){
+
+        }
+        clearDisplay()
+
+        //shows the number and the operator on div
+        const showNum = document.createElement('div');
+        showNum.textContent = concatNum;
+        display.appendChild(showNum);
+
+        const showOps = document.createElement('div');
+        showOps.textContent = operator.textContent;
+        display.appendChild(showOps);
+
+        numArr = [];
+    }))
+}
+/* function readArr(){
+    let tempArr = [];
+    operators.forEach(operator => operator.addEventListener("click", function(e){
+        let countOp = 0;
         for(let i = 0; i < operationArr.length; i++){
             //concatenate all the numbers before an operator
             if(operationArr[i] == "+" || operationArr[i] == "-" || operationArr[i] == "x" || operationArr[i] == "/"){
-                let concatNumOne = concatenateNum(firstNumArr);
+                countOp += 1;
+                
+                let concatNum = concatenateNum(numArr);
                 let tempOps = operationArr[i];
-                clearDisplay();
+
+                clearDisplay(); //clears the display
+
                 const showNum = document.createElement('div');
-                showNum.textContent = concatNumOne;
+                showNum.textContent = concatNum;
                 display.appendChild(showNum);
-                operationArr.push(concatNumOne);
+                operationArr.push(concatNum);//concat. number pushed to the array
+
                 const showOps = document.createElement('div');
                 showOps.textContent = tempOps;
                 display.appendChild(showOps);
-                operationArr.push(tempOps)
+                operationArr.push(tempOps); //operator pushed to the array
+                
 
-                /* opCount += 1;
-                console.log(firstNumArr)
-                if(opCount == 2){
-                    secondNumArr.push(operationArr.slice(1, -1))
-                    let concatNumTwo = concatenateNum(secondNumArr)
-                    console.log(concatNumTwo)
-                }*/
-            }
-            else{
-                firstNumArr.push(operationArr[i])
+                tempArr = operationArr;
+                if (countOp == 2){
+                    operationArr = tempArr.concat(operationArr);
+                    console.log(operationArr)
+                }
+                numArr = [];
             }
         }
         console.log(operationArr)
     }))
+}*/
 
+function calculation(){
+    
 }
 //equals.addeEventlistener
 //concatenate numbers in the array
