@@ -180,26 +180,41 @@ function displayNum(){
     })
 }
 
+function concatenateNum(array){
+    const num = Number(array.join(''));
+    return num;
+}
+
 function readArr(){
     operators.forEach(operator => operator.addEventListener("click", function(e){
-        let tempArr = [];
+        let firstNumArr = [];
+        let secondNumArr = [];
+        /* let opCount = 0; */
         for(let i = 0; i < operationArr.length; i++){
             //concatenate all the numbers before an operator
             if(operationArr[i] == "+" || operationArr[i] == "-" || operationArr[i] == "x" || operationArr[i] == "/"){
-                let concatNum = Number(tempArr.join(''));
+                let concatNumOne = concatenateNum(firstNumArr);
                 let tempOps = operationArr[i];
                 clearDisplay();
                 const showNum = document.createElement('div');
-                showNum.textContent = concatNum;
+                showNum.textContent = concatNumOne;
                 display.appendChild(showNum);
-                operationArr.push(concatNum);
+                operationArr.push(concatNumOne);
                 const showOps = document.createElement('div');
                 showOps.textContent = tempOps;
                 display.appendChild(showOps);
                 operationArr.push(tempOps)
+
+                /* opCount += 1;
+                console.log(firstNumArr)
+                if(opCount == 2){
+                    secondNumArr.push(operationArr.slice(1, -1))
+                    let concatNumTwo = concatenateNum(secondNumArr)
+                    console.log(concatNumTwo)
+                }*/
             }
             else{
-                tempArr.push(operationArr[i])
+                firstNumArr.push(operationArr[i])
             }
         }
         console.log(operationArr)
