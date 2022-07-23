@@ -33,6 +33,7 @@ function operate(operator, a, b){
     }
 }
 
+const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide')
 const display = document.querySelector('#display');
 const one = document.querySelector('#one');
 const two = document.querySelector('#two');
@@ -53,22 +54,23 @@ const clear = document.querySelector('#clear');
 
 let operationArr = [];
 
-//clears the whole display
+//clears the whole display(AC button)
 function clearDisplay(){
     while(display.firstChild){
         display.removeChild(display.firstChild);
     }
-    operationArr = [];
+    operationArr = []; // array becomes empty
     console.log(operationArr)
 }
 
-//delete the last number or operator
+//delete the last number or operator(Del button)
 function deleteNum(){
     display.removeChild(display.lastChild) // removes the last number or operator from the display
     operationArr.pop(); // removes the last element of the array
     console.log(operationArr)
 }
 
+//displays/deletes/clears numers/operators in div and stores/delete them in/from the array
 function displayNum(){
     one.addEventListener("click", function(e){
         const oneShow = document.createElement('div')
@@ -178,5 +180,34 @@ function displayNum(){
     })
 }
 
+function readArr(){
+    operators.forEach(operator => operator.addEventListener("click", function(e){
+        let tempArr = [];
+        for(let i = 0; i < operationArr.length; i++){
+            //concatenate all the numbers before an operator
+            if(operationArr[i] == "+" || operationArr[i] == "-" || operationArr[i] == "x" || operationArr[i] == "/"){
+                let concatNum = Number(tempArr.join(''));
+                let tempOps = operationArr[i];
+                clearDisplay();
+                const showNum = document.createElement('div');
+                showNum.textContent = concatNum;
+                display.appendChild(showNum);
+                operationArr.push(concatNum);
+                const showOps = document.createElement('div');
+                showOps.textContent = tempOps;
+                display.appendChild(showOps);
+                operationArr.push(tempOps)
+            }
+            else{
+                tempArr.push(operationArr[i])
+            }
+        }
+        console.log(operationArr)
+    }))
+
+}
 //equals.addeEventlistener
+//concatenate numbers in the array
+
 displayNum()
+readArr()
