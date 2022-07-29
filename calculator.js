@@ -34,6 +34,7 @@ function operate(operator, a, b){
 }
 
 const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide, #equals')
+const numbers = document.querySelectorAll('#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero')
 const display = document.querySelector('#display');
 const one = document.querySelector('#one');
 const two = document.querySelector('#two');
@@ -49,12 +50,15 @@ const plus = document.querySelector('#add');
 const minus = document.querySelector('#subtract');
 const times = document.querySelector('#multiply');
 const over = document.querySelector('#divide');
+const equals = document.querySelector('#equals')
 const remove = document.querySelector('#delete')
 const clear = document.querySelector('#clear');
 
 let operationArr = [];
 let numArr = [];
-let operatorArr = [];
+let toBeCalculated = [];
+
+/* let operatorArr = []; */
 
 //clears the whole display(AC button)
 function clearDisplay(){
@@ -197,30 +201,45 @@ function concatenateNum(array){
     return num;
 }
 
-function readArr(){
-    operators.forEach(operator => operator.addEventListener("click", function(e){
-        //pushing number and operator into the array
-        const concatNum = concatenateNum(numArr)
-        operationArr.push(concatNum)
-        operationArr.push(operator.textContent)
-        console.log(operationArr);
-
-        for(let i = 0; i < operationArr.length; i++){
-
-        }
-        clearDisplay()
-
-        //shows the number and the operator on div
-        const showNum = document.createElement('div');
-        showNum.textContent = concatNum;
-        display.appendChild(showNum);
-
-        const showOps = document.createElement('div');
-        showOps.textContent = operator.textContent;
-        display.appendChild(showOps);
-
-        numArr = [];
+function concatNum(){
+    numbers.forEach(number => number.addEventListener("click", function(e){
+        let newNum = concatenateNum(numArr);
+        console.log(newNum);
+        tempArr = [];
+        tempArr.push(newNum);
+        console.log(tempArr)
+        /* const showNewNum = document.createElement('div')
+        showNewNum.textContent = newNum
+        display.removeChild(display.firstChild)
+        display.appendChild(showNewNum) */
     }))
+}
+
+
+function addOperator(){
+    operators.forEach(operator => operator.addEventListener("click", function(e){
+        operationArr.push(operator.textContent);
+        numArr = [];
+        console.log(operationArr)
+        console.log(numArr)
+        toBeCalculated.push(tempArr[0]);
+        console.log(toBeCalculated)
+    }))
+}
+
+function calculation(){
+    let result;
+
+    displayNum();
+
+    let tempArr;
+    concatNum();
+    addOperator();
+
+    equals.addEventListener('click', function(e){
+        result = add(Number((toBeCalculated[0])),Number([toBeCalculated[1]]))
+        console.log(result)
+    })
 }
 /* function readArr(){
     let tempArr = [];
@@ -259,11 +278,12 @@ function readArr(){
     }))
 }*/
 
-function calculation(){
-    
-}
 //equals.addeEventlistener
 //concatenate numbers in the array
 
-displayNum()
-readArr()
+/* displayNum()
+concatNum()
+addOperator()
+ */
+
+calculation()
